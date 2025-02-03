@@ -35,6 +35,12 @@ const LoginScreen = () => {
           />
           <CustomButton title= "Log In" setOnPress={() => console.log("Log In Pressed")}>  </CustomButton>
 
+          <View style={styles.dividerContainer}>
+            <View style={styles.dividerLine} />
+            <Text style={styles.dividerText}>Or Log In With</Text>
+            <View style={styles.dividerLine} />
+          </View>
+
           <Text style={styles.signUpTextA} onPress={() => console.log('Sign Up pressed')}>I dont't have an account! <Text style={styles.signUpTextB}>Sign Up!</Text></Text>
         </View>
     </View>
@@ -74,6 +80,25 @@ const styles = StyleSheet.create({
     marginBottom: "5%"
   },
 
+  dividerContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginVertical: 20,
+    paddingHorizontal: 20,
+  },
+  
+  dividerLine: {
+    flex: 1,
+    height: 1,
+    backgroundColor: '#adadad',
+  },
+  
+  dividerText: {
+    paddingHorizontal: 10,
+    color: '#666666',
+    fontSize: 14,
+    fontWeight: '500',
+  },
 
   signUpTextA: {
     marginTop: 16,
