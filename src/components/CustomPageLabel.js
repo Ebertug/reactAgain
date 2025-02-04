@@ -2,9 +2,9 @@ import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
 const CustomPageLabel = ({pageLabel}) => {
-  return (
-      <Text style={styles.pageLabel}>{pageLabel}</Text>
-  )
+    return (
+        <Text style={styles.pageLabel}>{pageLabel}</Text>
+    )
 }
 
 

@@ -35,12 +35,13 @@ const styles = StyleSheet.create({
         marginTop: 10,
         marginBottom: 20,
         padding: 12,
-        borderWidth: 1,
+        borderWidth: 2,
         borderRadius: 16,
-        borderColor: 'gray',
+        borderColor: '#1f7bff',
         backgroundColor: '#b2e0ff',
         color:'#000000',
         fontSize: 16,
+        placeholderTextColor: '#313131',
     },
     
 })

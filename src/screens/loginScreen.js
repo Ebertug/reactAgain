@@ -1,47 +1,54 @@
-import { View, Text, StyleSheet, TextInput} from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import React, {useState} from 'react';
+import {CustomButton, CustomInput, CustomPageLabel, CustomTextButton} from '../components/'
 
-import CustomButton from '../components/CustomButton';
-import CustomInput from '../components/CustomInput';
-import CustomPageLabel from '../components/CustomPageLabel';
-
-const LoginScreen = () => {
-
+const LoginScreen = ({navigation}) => {
   const [email, setEmail] = useState('');    
   const [password, setPassword] = useState('');
 
   return (
     <View style={styles.mainContainer}>
-        <View style={styles.logoContainer}>
-          <Text style={styles.logoText}>Logo</Text>
-        </View>
-
-        <View style={styles.inputContainer}>
           <CustomPageLabel pageLabel="Log in" />
 
+        <View style={styles.inputContainer}>
+
           <CustomInput  
-            label="e-mail"
+            label="E-mail"
             value={email}
             onChangeText={setEmail}
-            placeholder="Enter your e-mail"
+            placeholder="Enter your E-mail"
           />
           
           <CustomInput 
             variable={password}
             onChangeText={setPassword}
-            label="password"
+            label="Password"
             secureTextEntry={true}
-            placeholder="Enter your password"
+            placeholder="Enter Your Password"
           />
-          <CustomButton title= "Log In" setOnPress={() => console.log("Log In Pressed")}>  </CustomButton>
+
+          <CustomTextButton text="Forgot Password?" setOnPress={() => navigation.navigate("ForgotPasswordScreen")}/>
+
+          <CustomButton title= "Log In" setOnPress={() => navigation.navigate("HomeScreen")}>  </CustomButton>
 
           <View style={styles.dividerContainer}>
             <View style={styles.dividerLine} />
             <Text style={styles.dividerText}>Or Log In With</Text>
             <View style={styles.dividerLine} />
           </View>
-
-          <Text style={styles.signUpTextA} onPress={() => console.log('Sign Up pressed')}>I dont't have an account! <Text style={styles.signUpTextB}>Sign Up!</Text></Text>
+          
+          <TouchableOpacity style={styles.googleButton} onPress={() => console.log("Google Pressed")}>
+            <Image 
+              source={require('../../assets/googleIcon.png')} 
+              style={styles.googleIcon}
+            />
+          </TouchableOpacity>
+          
+          <TouchableOpacity  style={{alignSelf: 'center'}} onPress={() => navigation.navigate("SignUpScreen")}>
+            <Text style={styles.signUpTextA}>I dont't have an account!  
+              <Text style={styles.signUpTextB}> Sign Up!</Text>
+            </Text>
+          </TouchableOpacity>
         </View>
     </View>
   );
@@ -51,34 +58,32 @@ const styles = StyleSheet.create({
 
   mainContainer: {
     flex: 1,
-    backgroundColor: '#b2e0ff',
+    backgroundColor: '#ffffff',
   },
 
-  logoContainer: {
-    flex: 1,
-    justifyContent:"center",
-    alignItems:"center",
-    backgroundColor: '#b2e0ff',
-    padding:16,
+  googleIcon:{
+    width: 30,  
+    height: 30,
+    resizeMode: 'contain',
+    alignSelf: 'center',
+  },
+
+  googleButton:{
+    alignSelf: 'center',
+    width: 30,
+    height: 30,
+    borderRadius: 20,
+    marginTop: 10,
+    marginBottom: 60,
   },
 
   inputContainer:{
-    flex:11,
+    justifyContent: 'flex-start',
+    marginTop: 100,
+    flex:10,
     backgroundColor: '#ffffff',
-    borderColor: "#adadad",
-    borderWidth: 1,
-    alignItems: 'flex',
-    justifyContent: 'flex',
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
   },
 
-  logoText: {
-    color: 'black',
-    fontSize: 32,
-    marginTop: "5%",
-    marginBottom: "5%"
-  },
 
   dividerContainer: {
     flexDirection: 'row',
@@ -100,12 +105,17 @@ const styles = StyleSheet.create({
     fontWeight: '500',
   },
 
-  signUpTextA: {
+  signUpContainer: {
     marginTop: 16,
-    alignSelf: "center",
+    alignItems: 'center',
+    backgroundColor: 'red',
+  },
+
+  signUpTextA: {
     fontSize: 16,
     fontWeight: 500,
   },
+
   signUpTextB: {
     color: '#1f7bff',
     fontWeight: 700,
