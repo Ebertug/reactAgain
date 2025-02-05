@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
         marginLeft: "10%",
         color: '#1f7bff',
         fontSize: 48,
-        marginTop: 20,
+        marginTop: 40,
         marginBottom: 40,
         fontWeight: 500,
     },

@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from 'react-native'
 import React, { useState } from 'react'
 import { CustomButton, CustomInput, CustomPageLabel, CustomTextButton } from '../components'
 
-const forgotPasswordScreen = (navigate) => {
+const forgotPasswordScreen = ({navigation}) => {
   const [email, setEmail] = useState('')
   return (
     <View style={styles.mainContainer}>
